@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gérer les Clients"
+        android:textSize="24sp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/editText_client_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom du Client"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editText_client_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Adresse E-mail du Client"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/button_add_client"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter Client"/>
+
+    <ListView
+        android:id="@+id/listView_clients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

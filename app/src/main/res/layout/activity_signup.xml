@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#181818"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Signup">
+
+    <EditText
+        android:id="@+id/nom"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="username"
+        android:inputType="textPersonName"
+        android:hint="User name "
+        android:textColorHint="#808080"
+        android:textColor="@android:color/white"
+        />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Email_adresse"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        android:drawableStart="@drawable/baseline_person_24"
+        android:textColorHint="#808080"
+        android:textColor="@android:color/white"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="password"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:textColorHint="#808080"
+        android:textColor="@android:color/white"
+        app:passwordToggleEnabled="true"
+        app:hintTextColor="@color/white"
+        />
+    <Button
+        android:id="@+id/connexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connectez-vous"
+        android:textSize="20sp"
+        android:layout_margin="20dp"/>
+    <TextView
+        android:id="@+id/move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#2196F3"
+        android:text="Already  have an account ? Login here"/>
+
+</LinearLayout>
