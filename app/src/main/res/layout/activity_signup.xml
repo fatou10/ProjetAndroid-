@@ -13,18 +13,29 @@
     tools:context=".Signup">
 
     <EditText
-        android:id="@+id/nom"
+        android:id="@+id/edit_nom"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:autofillHints="username"
         android:inputType="textPersonName"
-        android:hint="User name "
+        android:hint="Nom "
         android:textColorHint="#808080"
         android:textColor="@android:color/white"
         />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/edit_prenom"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="username"
+        android:inputType="textPersonName"
+        android:hint="Prenom "
+        android:textColorHint="#808080"
+        android:textColor="@android:color/white"
+        />
+
+    <EditText
+        android:id="@+id/edit_email"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:autofillHints="Email_adresse"
@@ -36,7 +47,7 @@
         />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/edit_password"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:autofillHints="password"
@@ -52,7 +63,7 @@
         android:id="@+id/connexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connectez-vous"
+        android:text="Inscrivez-vous"
         android:textSize="20sp"
         android:layout_margin="20dp"/>
     <TextView
