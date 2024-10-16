@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="8dp"
+    android:elevation="2dp">
+
+    <!-- Date de la réservation -->
+    <TextView
+        android:id="@+id/tv_reservation_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date : 12 Octobre 2024"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Heure de la réservation -->
+    <TextView
+        android:id="@+id/tv_reservation_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Heure : 14:00"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Service réservé -->
+    <TextView
+        android:id="@+id/tv_reservation_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service : Coupe de Cheveux"
+        android:textSize="16sp"
+        android:textColor="#333333" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_latest_activity_item_reservations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9F9F9"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

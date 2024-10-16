@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!-- Titre de l'application -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Réservez votre Salon"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:marginBottom="16dp"
+        android:textColor="#333333" />
+
+    <!-- Image de couverture -->
+    <ImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:scaleType="centerCrop"
+        android:contentDescription="Image du salon"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Bouton pour réserver un rendez-vous -->
+    <Button
+        android:id="@+id/btn_reserver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Réserver un Rendez-vous"
+        android:backgroundTint="#FF6F00"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Liste des services disponibles -->
+    <TextView
+        android:id="@+id/tv_services"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nos Services"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="start"
+        android:layout_marginBottom="8dp"
+        android:textColor="#333333" />
+
+
+    <!-- Section des dernières réservations -->
+    <TextView
+        android:id="@+id/tv_latest_reservations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vos Dernières Réservations"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="start"
+        android:layout_marginBottom="8dp"
+        android:textColor="#333333" />
+
+    <!-- RecyclerView pour afficher les réservations -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_latest_reservations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F9F9F9"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:scrollbars="vertical" />
+
+</LinearLayout>
