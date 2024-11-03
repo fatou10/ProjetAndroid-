@@ -59,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.buttonService.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ServiceActivity.class); // Remplacez par l'activité de gestion des clients
+            startActivity(intent);
+        });
+
         binding.buttonNotifications.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, NotificationsActivity.class); // Remplacez par l'activité de gestion des notifications
             startActivity(intent);

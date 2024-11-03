@@ -19,7 +19,7 @@
             android:name=".Home_client"
             android:exported="false" />
         <activity
-            android:name=".SignupClient"
+            android:name=".ServiceActivity"
             android:exported="false" />
         <activity
             android:name=".ClientsActivity"
