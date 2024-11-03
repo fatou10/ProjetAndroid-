@@ -65,73 +65,10 @@ public class Login extends AppCompatActivity {
         if (currentUser != null) {
             // Rediriger vers MainActivity si l'utilisateur est connecté
             String user_id = currentUser.getUid();
-            getUserProfileByUserId(user_id);
+            // je recupere l'id de l'utilisateur et en fonction de son role je le redirige vers la page correspondante
         }
     }
 
-    private void signIn(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Connexion réussie
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        String user_id = user.getUid();
-                        getUserProfileByUserId(user_id);
 
-                    } else {
-                        // En cas d'échec, afficher un message à l'utilisateur
-                        Toast.makeText(Login.this, "Authentification échouée : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-
-
-    private void getUserProfileByUserId(String userId) {
-        // Requête pour trouver le document où profilID correspond à userId
-        db.collection("Profil")
-                .whereEqualTo("profilID", userId)
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            // Récupère le premier document correspondant
-                            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                                String name = document.getString("nom");
-                                String prenom = document.getString("prenom");
-                                String role = document.getString("role");
-
-                                // Affichez ou utilisez les données
-                                Log.d("Profile", "Nom: " + name + ", Prenom: " + prenom + ", Role: " + role);
-
-                                // Redirection en fonction du rôle
-                                Intent intent;
-                                if ("admin".equals(role)) {
-                                    intent = new Intent(getApplicationContext(), MainActivity.class);
-                                } else if ("client".equals(role)) {
-                                    intent = new Intent(getApplicationContext(), Home_client.class);
-                                } else {
-                                    Log.w("Profile", "Rôle non reconnu : " + role);
-                                    return; // Sortie si le rôle n'est pas reconnu
-                                }
-
-                                // Lancer l'activité correspondante
-                                startActivity(intent);
-                                finish(); // Fermer cette activité pour éviter de revenir en arrière
-                                return; // Sortir de la boucle dès que le rôle est trouvé et redirigé
-                            }
-                        } else {
-                            Log.d("Profile", "Aucun document de profil trouvé pour cet utilisateur.");
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("Profile", "Erreur lors de la récupération du profil", e);
-                    }
-                });
-    }
 
 }

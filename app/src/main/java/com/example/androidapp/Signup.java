@@ -19,10 +19,7 @@ public class Signup extends AppCompatActivity {
     private ActivitySignupBinding binding;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
-    private EditText edit_password;
-    private EditText edit_email;
-    private EditText edit_nom;
-    private EditText edit_prenom;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,7 @@ public class Signup extends AppCompatActivity {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(Signup.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
             } else {
-                createAccount(email, password,nom,prenom);
+            // crée le compte de l'utilisateur avec ses options
             }
         });
 
@@ -56,57 +53,5 @@ public class Signup extends AppCompatActivity {
         });
     }
 
-    private void createAccount(String email, String password,String nom, String prenom) {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Inscription réussie
-                        String profilID=mAuth.getUid();
 
-                        this.CreateProfil(prenom,nom,profilID,email);
-
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        updateUI(user);
-                    } else {
-                        // En cas d'échec, afficher un message à l'utilisateur
-                        Toast.makeText(Signup.this, "Échec de l'inscription : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        updateUI(null);
-                    }
-                });
-    }
-
-    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-            // Rediriger vers MainActivity si l'inscription est réussie
-            Intent intent = new Intent(Signup.this, MainActivity.class);
-            startActivity(intent);
-            finish(); // Empêche de revenir à Signup
-        }
-    }
-
-
-    private void CreateProfil(String prenom, String nom,String profilID,String email) {
-        Map<String, Object> Profil = new HashMap<>();
-        Profil.put("prenom", prenom);
-        Profil.put("nom", nom);
-        Profil.put("role", "client"); // Ajouter l'e-mail du client au rendez-vous
-        Profil.put("email", email);
-        Profil.put("profilID", profilID);
-
-        // Ajouter le Profil à Firestore
-        db.collection("Profil")
-                .add(Profil)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(this, "utilisatreur creé avec succé", Toast.LENGTH_LONG).show();
-                        edit_prenom.setText("");
-                        edit_nom.setText("");
-                        edit_password.setText("");
-                        edit_email.setText(""); // Réinitialiser l'e-mail
-
-                    } else {
-                        Toast.makeText(this, "Échec de l'ajout : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
 }

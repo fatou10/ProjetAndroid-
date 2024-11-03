@@ -6,16 +6,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ServiceActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,12 +44,12 @@ public class ServiceActivity extends AppCompatActivity {
             if (service.isEmpty()  || price.isEmpty()) {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
             } else {
-                addService(service, price); // Ajouter l'e-mail lors de l'ajout du rendez-vous
+                 // Ajouter l'e-mail lors de l'ajout du rendez-vous
             }
         });
 
         // Charger les rendez-vous au démarrage
-        loadRendezVous();
+
 
         // Événement pour le bouton Retour
         findViewById(R.id.button_back).setOnClickListener(view -> {
@@ -65,46 +61,4 @@ public class ServiceActivity extends AppCompatActivity {
 
     }
 
-    private void addService(String service, String prix) {
-        Map<String, Object> set_service = new HashMap<>();
-        set_service.put("service", service);
-        set_service.put("price", prix);
-        int idService = generateRandomId();
-        set_service.put("id_service", idService);
-
-        // Ajouter le rendez-vous à Firestore
-        db.collection("service")
-                .add(set_service)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(this, "service ajouté avec succes", Toast.LENGTH_SHORT).show();
-                        editTextService.setText("");
-                        editTextPrice.setText(""); // Réinitialiser l'e-mail
-                        loadRendezVous(); // Recharge les rendez-vous après l'ajout
-                    } else {
-                        Toast.makeText(this, "Échec de l'ajout : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void loadRendezVous() {
-        db.collection("service").get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                ListServices.clear(); // Vider la liste avant de la recharger
-                for (QueryDocumentSnapshot document : task.getResult()) {
-                    String service = document.getString("service");
-                    String prix = document.getString("price");
-
-                    ListServices.add(service + " - " + prix ); // Ajouter service
-                }
-                adapter.notifyDataSetChanged(); // Notifier l'adaptateur que les données ont changé
-            } else {
-                Toast.makeText(this, "Échec du chargement : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    private int generateRandomId() {
-        Random random = new Random();
-        return random.nextInt(1000000); // Génère un nombre aléatoire entre 0 et 999999
-    }
 }
