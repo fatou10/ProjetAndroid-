@@ -17,9 +17,6 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity {
     private ActivitySignupBinding binding;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +25,7 @@ public class Signup extends AppCompatActivity {
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Initialiser Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+
 
         // Gestion du clic sur le bouton "S'inscrire"
         binding.connexion.setOnClickListener(view -> {

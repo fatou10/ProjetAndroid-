@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RendezVousActivity extends AppCompatActivity {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    
     private ArrayList<String> rendezvousList; // Liste des rendez-vous
     private ArrayAdapter<String> adapter; // Adaptateur pour la ListView
     private EditText editTextService; // Champ pour le service
